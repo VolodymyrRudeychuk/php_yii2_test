@@ -69,7 +69,7 @@ StatusAsset::register($this);
 
     ]);
 
-        Html::submitButton($model->isNewRecord ? 'Create' : ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']);
+        Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']);
         ?>
 
 

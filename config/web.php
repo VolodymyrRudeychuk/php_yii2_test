@@ -1,16 +1,6 @@
-
-
 <?php
-use yii\helpers\Url;
-
-
-
 
 $params = require(__DIR__ . '/params.php');
-
-
-// Url::to() calls UrlManager::createUrl() to create a URL
-//$url = Url::to(['site/index', 'id' => 100]);
 
 $config = [
     'id' => 'basic',
@@ -59,7 +49,8 @@ $config = [
             // Disable r= routes
             'enablePrettyUrl' => false,
             'rules' => array(
-                '<module>/<controller>/<action>/<id:\d+>' => '<module>/<controller>/<action>',
+
+
             ),
         ],
 

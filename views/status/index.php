@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel app\models\StatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'All files';
+$this->title = 'All Files';
 $this->params['breadcrumbs'][] = $this->title;
 
 $searchModel = New \app\models\StatusSearch();
@@ -28,7 +28,7 @@ $dataProvider->pagination->pageSize=5;
     <p>
 
         <?php if(Yii::$app->user->isGuest == false) {
-        echo '<p>' . Html::a('Upload file', ['create'], ['class' => 'btn btn-success']) . '</p>';}
+        echo '<p>' . Html::a('Create Status', ['create'], ['class' => 'btn btn-success']) . '</p>';}
         ?>
     </p>
     <?=

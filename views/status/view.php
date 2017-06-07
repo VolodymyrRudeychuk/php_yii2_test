@@ -41,7 +41,11 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <p>
-
+        <?php
+            if($model->user_id === \Yii::$app->user->identity->id ){
+                echo Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+            } else return 'you have not permission';
+         ?>
         <?php
             if($model->user_id == \Yii::$app->user->identity->id)
                 echo Html::a('Delete', ['delete', 'id' => $model->id], [

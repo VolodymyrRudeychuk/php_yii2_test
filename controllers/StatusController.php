@@ -21,7 +21,6 @@ use yii\filters\AccessControl;
  */
 class StatusController extends Controller
 {
-
     /**
      * @inheritdoc
      */
@@ -51,7 +50,20 @@ class StatusController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    /**
+     * Lists all Status models.
+     * @return mixed
+     */
+    public function actionMyFiles()
+    {
+        $searchModel = new StatusSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        return $this->render('myFiles', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single Status model.
@@ -83,6 +95,7 @@ class StatusController extends Controller
             $mysqlNow = \Yii::$app->db->createCommand("SELECT now();")->queryOne();
             $phpMysqlDate = (new \DateTime(end($mysqlNow)));
             if (!is_null($image)) {
+                $model->image_src_filename =  $image->name;
                 $ext = end((explode(".", $image->name)));
                 // generate a unique file name to prevent duplicate filenames
                 $model->image_web_filename = Yii::$app->security->generateRandomString().".{$ext}";
@@ -98,7 +111,6 @@ class StatusController extends Controller
 
             }
             if ($model->save()) {
-                $model->image_src_filename =  $image->name;
 
                 return $this->redirect(['view', 'id' => $model->id]);
             }  else {

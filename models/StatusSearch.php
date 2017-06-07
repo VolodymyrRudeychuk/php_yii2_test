@@ -18,8 +18,7 @@ class StatusSearch extends Status
     public function rules()
     {
         return [
-            [['id', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['created_by', 'image_src_filename', 'image_web_filename'], 'safe'],
+            [['image_src_filename', 'image_web_filename'], 'safe'],
         ];
     }
 
@@ -58,15 +57,7 @@ class StatusSearch extends Status
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'user_id' => $this->user_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ]);
-
-        $query->andFilterWhere(['like', 'created_by', $this->created_by])
-            ->andFilterWhere(['like', 'image_src_filename', $this->image_src_filename])
+        $query->andFilterWhere(['like', 'image_src_filename', $this->image_src_filename])
             ->andFilterWhere(['like', 'image_web_filename', $this->image_web_filename]);
 
         return $dataProvider;

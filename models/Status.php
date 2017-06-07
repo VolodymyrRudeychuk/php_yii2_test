@@ -58,9 +58,4 @@ class Status extends \yii\db\ActiveRecord
     {
         return ['id'];
     }
-
-    public function getCreatedBy()
-    {
-        return $this->hasOne(Status::className(), ['id' => 'created_by']);
-    }
 }

@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel app\models\StatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Files';
+$this->title = 'My files';
 $this->params['breadcrumbs'][] = $this->title;
 
 $searchModel = New \app\models\StatusSearch();
@@ -17,41 +17,18 @@ $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 $dataProvider->pagination->pageSize=5;
 
 
-
-$userId = (int) Yii::$app->request->get('id');
-
-Yii::trace('user-id', $userId);
-
-function dataById  ($userId) {
-    $model = $this->findModel($userId);
-
-    $query = ProductItem::find()
-        ->where(['brand_id' => $model->brand_id])
-        ->limit(10);
-}
 ?>
-
 
 <div class="status-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        here will be my files
-        <!--        --><?php //if(Yii::$app->user->isGuest == false) {
-        //            echo '<p>' . Html::a('Upload file', ['create'], ['class' => 'btn btn-success']) . '</p>';}
-        //        ?>
-    </p>
+   
     <?=
 
 
     GridView::widget([
-
-        'rowOptions'   => function ($model, $key, $index, $grid) {
-            return ['data-id' => $model->id];
-        },
-
 
         'dataProvider' => $dataProvider,
 //       'filterModel' => $searchModel,

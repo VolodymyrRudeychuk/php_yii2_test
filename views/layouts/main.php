@@ -31,22 +31,21 @@ AppAsset::register($this);
     NavBar::begin([
 
         'brandLabel' => 'Test project for White-Label',
-        'brandUrl' => ['/status/index'],
+        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
 
     $navItems=[
-        ['label' => 'All files', 'url' => ['/status/index']],
-
+        ['label' => 'All files', 'url' => ['/status/index']]
 
     ];
      if (Yii::$app->user->isGuest) {
         array_push($navItems,['label' => 'Sign In', 'url' => ['/user/security/login']],['label' => 'Sign Up', 'url' => ['/user/registration/register']]);
      } else {
           array_push($navItems,
-              ['label' => 'My files', 'url' => ['/site/index/id' .\Yii::$app->user->identity->id]],
+              ['label' => 'My files', 'url' => ['/site/index']],
 
               ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                   'url' => ['/site/logout'],
